@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="title">
+        <h4>This is the list of users</h4>
+        <button type="button" class="btn btn-primary" routerLink="/add">Add New User</button>
+    </div>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">StaffID</th>
+            <th scope="col">Last-Name</th>
+            <th scope="col">Name</th>
+            <th scope="col">Position</th>
+            <th scope="col">Supervisor</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listUsers">
+            <td> {{ item.id }} </td>
+            <td> {{ item.last_name }} </td>
+            <td> {{ item.name }} </td>
+            <td> {{ item.position }} </td>
+            <td> {{ item.supervisor }} </td>
+            <td>
+                <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Edit</button>
+                <button type="button" class="btn btn-danger btn-sm ms-2">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+</div>
