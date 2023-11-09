@@ -3,29 +3,57 @@
         <h4>This is the list of users</h4>
         <button type="button" class="btn btn-primary" routerLink="/add">Add New User</button>
     </div>
-    <table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">StaffID</th>
-            <th scope="col">Last-Name</th>
-            <th scope="col">Name</th>
-            <th scope="col">Position</th>
-            <th scope="col">Supervisor</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of listUsers">
-            <td> {{ item.id }} </td>
-            <td> {{ item.last_name }} </td>
-            <td> {{ item.name }} </td>
-            <td> {{ item.position }} </td>
-            <td> {{ item.supervisor }} </td>
-            <td>
-                <button routerLink="/edit/{{ item.id }}" type="button" class="btn btn-info btn-sm">Edit</button>
-                <button type="button" class="btn btn-danger btn-sm ms-2">Delete</button>
-            </td>
-        </tr>
-    </tbody>
+</div>
+<div class="table-container">
+    <table *ngIf="listUsers.length > 0" class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">StaffID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Last-Name</th>
+                <th scope="col">Position</th>
+                <th scope="col">Type</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Supervisor</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Birthday</th>
+                <th scope="col">Program</th>
+                <th scope="col">Computer</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of listUsers">
+                <td> {{ item.staff_num }} </td>
+                <td> {{ item.first_name }} </td>
+                <td> {{ item.last_name }} </td>
+                <td> {{ item.possition }} </td>
+                <td> {{ item.type_em }} </td>
+                <td> {{ item.start_date }} </td>
+                <td> {{ item.end_date }} </td>
+                <td> {{ item.supervisor_name }} </td>
+                <td> {{ item.salary | currency}} </td>
+                <td> {{ item.birthday }} </td>
+                <td> {{ item.program }} </td>
+                <td> {{ item.computer }} </td>
+                <td> {{ item.phone }} </td>
+                <td> {{ item.email }} </td>
+                <td>
+                    <div class="button-container">
+                        <div class="button-wrapper">
+                            <button routerLink="/edit/{{ item.staff_num }}" type="button"
+                                class="btn btn-info btn-sm">Update</button>
+                        </div>
+                        <div class="button-wrapper">
+                            <button (click)="deleteUser(item.staff_num)" type="button" class="btn btn-danger btn-sm ms-2">Delete</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
     </table>
+    <h5 *ngIf="listUsers.length == 0" >No hay Usuarios actualmente en la base de datos</h5>
 </div>
