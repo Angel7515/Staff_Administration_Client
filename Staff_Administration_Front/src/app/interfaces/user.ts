@@ -12,6 +12,6 @@ export interface User {
     program: string,
     computer: string,
     phone: string,
-    office: number,
+    office: string,
     email: string 
 }
